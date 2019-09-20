@@ -1,0 +1,24 @@
+.icon {
+  width: 24px;
+  height: 24px;
+  border: 1px solid #e0e0e0;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.8rem;
+  transform: rotate(45deg);
+  transition: 0.15s;
+}
+
+.icon__item {
+  position: relative;
+  transform: translateY(-2px);
+}
+
+.icon:hover {
+  background: #c6213c;
+  color: #fff;
+  transform: rotate(360deg);
+  cursor: pointer;
+}
