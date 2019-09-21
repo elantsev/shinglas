@@ -31,12 +31,18 @@
 }
 .table__item:nth-of-type(3) {
   width: 88.45px;
+  justify-content: flex-end;
+  padding-right: 20px;
 }
 .table__item:nth-of-type(4) {
   width: 132.68px;
+  justify-content: flex-end;
+  padding-right: 30px;
 }
 .table__item:nth-of-type(5) {
   width: 132.68px;
+  justify-content: flex-end;
+  padding-right: 30px;
 }
 .table__item:nth-of-type(6) {
   width: 44.23px;
