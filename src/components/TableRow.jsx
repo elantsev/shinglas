@@ -11,6 +11,8 @@ function TableRow(props) {
     price
   } = props.item;
 
+  const { onDeleteItem } = props;
+
   let unitFormatted = `${quantity} ${unit}`;
   let priceFormatted = String(price.toFixed(2)).replace(
     /(\d)(?=(\d{3})+([^\d]|$))/g,
@@ -37,7 +39,7 @@ function TableRow(props) {
       </div>
       <div className={style.table__item}>{quantityFormatted}</div>
       <div className={style.table__item}>
-        <Icon id={id} />
+        <Icon id={id} onDeleteItem={onDeleteItem} />
       </div>
     </div>
   );

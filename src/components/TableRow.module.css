@@ -4,6 +4,9 @@
   border-top: 1px solid #e6e6e6;
   color: #364657;
 }
+.table__row:hover {
+  background: #e6e6e6;
+}
 .table__link {
   text-decoration: none;
   color: #364657;
