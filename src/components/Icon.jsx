@@ -3,7 +3,6 @@ import style from "./Icon.module.css";
 
 function Icon(props) {
   const { id, onDeleteItem } = props;
-  console.log(id);
 
   return (
     <div id={id} className={style.icon}>

@@ -18,7 +18,7 @@ function TableRow(props) {
     /(\d)(?=(\d{3})+([^\d]|$))/g,
     "$1 "
   );
-  let quantityFormatted = String((quantity * price).toFixed(2)).replace(
+  let valueFormatted = String((quantity * price).toFixed(2)).replace(
     /(\d)(?=(\d{3})+([^\d]|$))/g,
     "$1 "
   );
@@ -26,7 +26,7 @@ function TableRow(props) {
   return (
     <div id={id} className={style.table__row}>
       <div className={style.table__item}>
-        <img className={style.table__link} href={img} alt="pic" />
+        <img className={style.table__img} url={img} alt="pic" />
       </div>
       <div className={style.table__item}>
         <a className={style.table__link} href={href}>
@@ -37,7 +37,7 @@ function TableRow(props) {
       <div className={style.table__item}>
         <p>{priceFormatted}</p>
       </div>
-      <div className={style.table__item}>{quantityFormatted}</div>
+      <div className={style.table__item}>{valueFormatted}</div>
       <div className={style.table__item}>
         <Icon id={id} onDeleteItem={onDeleteItem} />
       </div>

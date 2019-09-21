@@ -84,10 +84,7 @@ export function orderData(state = initialState, action) {
   switch (action.type) {
     case DELETE_ITEM:
       let orderData = state.orderData.filter(order => order.id !== action.id);
-      console.log("редюсер orderData", orderData);
-      console.log("редюсер orderData", action);
-
-      return { orderData };
+      return { ...state, orderData };
 
     default:
       return state;

@@ -1,8 +1,6 @@
 import React from "react";
 import TableRow from "./TableRow";
 
-import style from "./TableRows.module.css";
-
 function TableRows(props) {
   const { orderData, onDeleteItem } = props;
 
