@@ -27,7 +27,7 @@ function TableRow(props) {
   return (
     <div id={id} className={style.table__row}>
       <div className={style.table__item}>
-        <img className={style.table__img} url={img} alt="pic" />
+        <img className={style.table__img} src={img} alt="pic" />
       </div>
       <div className={style.table__item}>
         <a className={style.table__link} href={href}>

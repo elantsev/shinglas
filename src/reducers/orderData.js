@@ -4,7 +4,7 @@ const initialState = {
   orderData: [
     {
       id: 1,
-      img: "prog/img/1.png",
+      img: "http://shinglas.epizy.com/static/img/1.png",
       name: {
         name: "SHINGLAS многослойная черепица, Ранчо, Коричневый, 2 м2",
         href: "#"
@@ -15,7 +15,7 @@ const initialState = {
     },
     {
       id: 2,
-      img: "prog/img/2.png",
+      img: "http://shinglas.epizy.com/static/img/2.png",
       name: {
         name: "Черепица конька/карниза  (уп. 12 п.м / 20 п.м)",
         href: "#"
@@ -26,7 +26,7 @@ const initialState = {
     },
     {
       id: 3,
-      img: "prog/img/3.png",
+      img: "http://shinglas.epizy.com/static/img/3.png",
       name: { name: "Планка карниза, 2 м", href: "#" },
       quantity: 15,
       quantityUnit: "шт.",
@@ -34,7 +34,7 @@ const initialState = {
     },
     {
       id: 4,
-      img: "prog/img/4.png",
+      img: "http://shinglas.epizy.com/static/img/4.png",
       name: { name: "Планка ветровая, 2 м", href: "#" },
       quantity: 10,
       quantityUnit: "шт.",
@@ -42,7 +42,7 @@ const initialState = {
     },
     {
       id: 5,
-      img: "prog/img/5.png",
+      img: "http://shinglas.epizy.com/static/img/5.png",
       name: { name: "Ковер подкладочный, рулон 15 м2", href: "#" },
       quantity: 11,
       quantityUnit: "шт.",
@@ -50,7 +50,7 @@ const initialState = {
     },
     {
       id: 6,
-      img: "prog/img/6.png",
+      img: "http://shinglas.epizy.com/static/img/6.png",
       name: { name: "Лист OSB, 2500×1250×9 мм", href: "#" },
       quantity: 54,
       quantityUnit: "шт.",
@@ -58,7 +58,7 @@ const initialState = {
     },
     {
       id: 7,
-      img: "prog/img/7.png",
+      img: "http://shinglas.epizy.com/static/img/7.png",
       name: { name: "Аэратор коньковый AIRIDGE FELT", href: "#" },
       quantity: 26,
       quantityUnit: "шт.",
@@ -66,7 +66,7 @@ const initialState = {
     },
     {
       id: 8,
-      img: "prog/img/8.png",
+      img: "http://shinglas.epizy.com/static/img/8.png",
       name: { name: "Вентилятор скатный Huopa KTV", href: "#" },
       quantity: 3,
       quantityUnit: "уп.",
@@ -74,7 +74,7 @@ const initialState = {
     },
     {
       id: 9,
-      img: "prog/img/9.png",
+      img: "http://shinglas.epizy.com/static/img/9.png",
       name: { name: "Мастика битумная, 3 л", href: "#" },
       quantity: 5,
       quantityUnit: "шт.",
@@ -82,7 +82,7 @@ const initialState = {
     },
     {
       id: 10,
-      img: "prog/img/10.png",
+      img: "http://shinglas.epizy.com/static/img/10.png",
       name: { name: "Гвозди кровельные ершеные (упаковка 5 кг)", href: "#" },
       quantity: 4,
       quantityUnit: "уп.",
