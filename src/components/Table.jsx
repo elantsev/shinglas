@@ -5,9 +5,17 @@ import TableRows from "./TableRows";
 import { deleteItem, changeQuantity } from "../actions/orderDataActions";
 import { TableHeader } from "./TableHeader";
 import { TableFooter } from "./TableFooter";
+import PropTypes from "prop-types";
+import classNames from "classnames";
 
-function Table(props) {
-  const { orderData, onDeleteItem, onChangeQuantity } = props;
+function Table({
+  orderData,
+  onDeleteItem,
+  onChangeQuantity,
+  className,
+  ...attr
+}) {
+  const classes = classNames(style.table, className);
 
   let totalPrice = orderData.reduce(
     (acc, el) => (acc += el.quantity * el.price),
@@ -15,7 +23,7 @@ function Table(props) {
   );
 
   return (
-    <div className={style.table}>
+    <div className={classes} {...attr}>
       <TableHeader />
       <TableRows
         orderData={orderData}
@@ -42,3 +50,21 @@ export default connect(
   mapStateToProps,
   mapDispatchToProps
 )(Table);
+
+Table.propTypes = {
+  onDeleteItem: PropTypes.func.isRequired,
+  onChangeQuantity: PropTypes.func.isRequired,
+  orderData: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      img: PropTypes.string,
+      name: PropTypes.shape({
+        name: PropTypes.string.isRequired,
+        href: PropTypes.string
+      }),
+      quantity: PropTypes.number,
+      quantityUnit: PropTypes.string,
+      price: PropTypes.number
+    })
+  )
+};

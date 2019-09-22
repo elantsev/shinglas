@@ -2,30 +2,35 @@ import React, { useState } from "react";
 import style from "./TableRow.module.css";
 import Icon from "./Icon";
 import { numberFormatter } from "../utils/numberFormatter";
+import { PropTypes } from "prop-types";
+import classNames from "classnames";
 
-function TableRow(props) {
-  const {
+function TableRow({
+  onDeleteItem,
+  onChangeQuantity,
+  className,
+  item: {
     id,
     img,
     name: { name, href },
     quantity,
     quantityUnit,
     price
-  } = props.item;
-
-  const { onDeleteItem, onChangeQuantity } = props;
-
+  }
+}) {
   const [quantityEditMode, setQuantityEditMode] = useState(false);
 
+  const classes = classNames(style.table__row, className);
+
   const onChangeQuantityHandler = event => {
-    let value = event.target.value;
+    let value = +event.target.value;
     if (value >= 0 && value % 1 === 0) {
-      onChangeQuantity(id, event.target.value);
+      onChangeQuantity(id, value);
     }
   };
 
   return (
-    <div id={id} className={style.table__row}>
+    <div id={id} className={classes}>
       <div className={style.table__item}>
         <img className={style.table__img} src={img} alt="pic" />
       </div>
@@ -71,3 +76,19 @@ function TableRow(props) {
 }
 
 export default TableRow;
+
+TableRow.propTypes = {
+  onDeleteItem: PropTypes.func.isRequired,
+  onChangeQuantity: PropTypes.func.isRequired,
+  item: PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    img: PropTypes.string,
+    name: PropTypes.shape({
+      name: PropTypes.string.isRequired,
+      href: PropTypes.string
+    }),
+    quantity: PropTypes.number,
+    quantityUnit: PropTypes.string,
+    price: PropTypes.number
+  })
+};

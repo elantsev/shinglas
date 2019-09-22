@@ -1,11 +1,13 @@
 import React from "react";
 import style from "./Icon.module.css";
+import { PropTypes } from "prop-types";
+import classNames from "classnames";
 
-function Icon(props) {
-  const { id, onDeleteItem } = props;
+function Icon({ id, onDeleteItem, className }) {
+  const classes = classNames(style.icon, className);
 
   return (
-    <div id={id} className={style.icon}>
+    <div id={id} className={classes}>
       <p className={style.icon__item} onClick={() => onDeleteItem(id)}>
         +
       </p>
@@ -14,3 +16,8 @@ function Icon(props) {
 }
 
 export default Icon;
+
+Icon.propTypes = {
+  id: PropTypes.number.isRequired,
+  onDeleteItem: PropTypes.func
+};
