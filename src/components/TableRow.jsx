@@ -18,7 +18,10 @@ function TableRow(props) {
   const [quantityEditMode, setQuantityEditMode] = useState(false);
 
   const onChangeQuantityHandler = event => {
-    onChangeQuantity(id, event.target.value);
+    let value = event.target.value;
+    if (value >= 0 && value % 1 === 0) {
+      onChangeQuantity(id, event.target.value);
+    }
   };
 
   return (
