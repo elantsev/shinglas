@@ -50,3 +50,15 @@
 .table__item:nth-of-type(6) {
   width: 44.23px;
 }
+
+.table__quantity_input {
+  width: 50px;
+  font-size: 13px;
+  margin-right: 5px;
+}
+
+.table__quantity_p {
+  white-space: nowrap;
+  position: relative;
+  right: -15px;
+}

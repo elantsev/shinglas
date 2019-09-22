@@ -1,0 +1,24 @@
+.table__footer {
+  display: flex;
+  font-weight: bold;
+  height: 40px;
+  background: #f3f3f3;
+  color: #4f525a;
+  margin-top: 20px;
+  justify-content: flex-end;
+}
+
+.table__item {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  padding: 0 10px;
+  width: 132.68px;
+}
+
+.table__item:last-of-type {
+  justify-content: flex-end;
+  padding-right: 30px;
+  margin-right: 44.23px;
+}

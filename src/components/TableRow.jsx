@@ -1,27 +1,25 @@
-import React from "react";
+import React, { useState } from "react";
 import style from "./TableRow.module.css";
 import Icon from "./Icon";
+import { numberFormatter } from "../utils/numberFormatter";
 
 function TableRow(props) {
   const {
     id,
     img,
     name: { name, href },
-    quantity: { quantity, unit },
+    quantity,
+    quantityUnit,
     price
   } = props.item;
 
-  const { onDeleteItem } = props;
+  const { onDeleteItem, onChangeQuantity } = props;
 
-  let unitFormatted = `${quantity} ${unit}`;
-  let priceFormatted = String(price.toFixed(2)).replace(
-    /(\d)(?=(\d{3})+([^\d]|$))/g,
-    "$1 "
-  );
-  let valueFormatted = String((quantity * price).toFixed(2)).replace(
-    /(\d)(?=(\d{3})+([^\d]|$))/g,
-    "$1 "
-  );
+  const [quantityEditMode, setQuantityEditMode] = useState(false);
+
+  const onChangeQuantityHandler = event => {
+    onChangeQuantity(id, event.target.value);
+  };
 
   return (
     <div id={id} className={style.table__row}>
@@ -33,11 +31,35 @@ function TableRow(props) {
           {name}
         </a>
       </div>
-      <div className={style.table__item}>{unitFormatted}</div>
-      <div className={style.table__item}>
-        <p>{priceFormatted}</p>
+      <div
+        className={style.table__item}
+        onClick={() => setQuantityEditMode(true)}
+      >
+        {!quantityEditMode && (
+          <span title="кликните для корректировки">
+            {`${quantity} ${quantityUnit}`}
+          </span>
+        )}
+        {quantityEditMode && (
+          <p className={style.table__quantity_p}>
+            <input
+              autoFocus
+              type="number"
+              value={quantity}
+              className={style.table__quantity_input}
+              onChange={onChangeQuantityHandler}
+              onBlur={() => setQuantityEditMode(false)}
+            />
+            <span>{quantityUnit}</span>
+          </p>
+        )}
       </div>
-      <div className={style.table__item}>{valueFormatted}</div>
+      <div className={style.table__item}>
+        <p>{numberFormatter(price)}</p>
+      </div>
+      <div className={style.table__item}>
+        {numberFormatter(price * quantity)}
+      </div>
       <div className={style.table__item}>
         <Icon id={id} onDeleteItem={onDeleteItem} />
       </div>
