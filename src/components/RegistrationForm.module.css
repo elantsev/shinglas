@@ -1,0 +1,7 @@
+.registrationForm {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  width: 380px;
+  margin: auto;
+}
