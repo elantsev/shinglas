@@ -6,8 +6,8 @@ import RegistrationForm from "./components/RegistrationForm";
 function App() {
   return (
     <>
-      {/* <Calculations /> */}
       <RegistrationForm />
+      {/* <Calculations /> */}
     </>
   );
 }

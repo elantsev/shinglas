@@ -5,3 +5,10 @@
   width: 380px;
   margin: auto;
 }
+.registrationForm__form {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  width: 380px;
+  margin: auto;
+}
