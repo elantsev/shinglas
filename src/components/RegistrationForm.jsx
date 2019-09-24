@@ -11,7 +11,9 @@ const SignupSchema = Yup.object().shape({
   email: Yup.string()
     .email("Не корректный email")
     .required("Обязательное поле!"),
-  password: Yup.string().required("Обязательное поле!")
+  password: Yup.string()
+    .min(6, ({ min }) => `Пароль должен быть больше ${min} символов`)
+    .required("Обязательное поле!")
 });
 
 function RegistrationForm({ className }) {
