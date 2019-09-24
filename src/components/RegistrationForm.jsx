@@ -10,7 +10,7 @@ import * as Yup from "yup";
 const SignupSchema = Yup.object().shape({
   email: Yup.string()
     .email("Не корректный email")
-    .required("Обязательное поле"),
+    .required("Обязательное поле!"),
   password: Yup.string().required("Обязательное поле!")
 });
 
