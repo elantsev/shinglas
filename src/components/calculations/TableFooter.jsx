@@ -1,6 +1,6 @@
 import React from "react";
 import style from "./TableFooter.module.css";
-import { numberFormatter } from "../utils/numberFormatter";
+import { numberFormatter } from "../../utils/numberFormatter";
 import { PropTypes } from "prop-types";
 import classNames from "classnames";
 

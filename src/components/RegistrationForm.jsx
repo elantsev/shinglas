@@ -46,6 +46,7 @@ function RegistrationForm({ className }) {
             onSubmit={handleSubmit}
             className={style.registrationForm__form}
           >
+            {console.log(isSubmitting)}
             <TextField
               name="email"
               required
@@ -81,8 +82,6 @@ function RegistrationForm({ className }) {
               name="checkedB"
               control={
                 <Checkbox
-                  // checked={state.checkedB}
-                  // onChange={handleChange("checkedB")}
                   checked={values.rememberMe}
                   onChange={handleChange}
                   color="primary"
@@ -92,7 +91,8 @@ function RegistrationForm({ className }) {
               label="Запомнить меня"
             />
             <Button
-              onSubmit={() => handleSubmit()}
+              disabled={isSubmitting}
+              type="submit"
               variant="contained"
               color="primary"
               className={classes.button}

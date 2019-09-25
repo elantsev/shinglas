@@ -1,10 +1,10 @@
 import React from "react";
 import "./App.css";
-import Calculations from "./components/Calculations";
 import RegistrationForm from "./components/RegistrationForm";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Page404 from "./components/Page404";
 import PrivateRoute from "./components/PrivateRoute";
+import Calculations from "./components/calculations/Calculations";
 
 function App() {
   return (

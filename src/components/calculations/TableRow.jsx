@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import style from "./TableRow.module.css";
-import Icon from "./Icon";
-import { numberFormatter } from "../utils/numberFormatter";
+import { numberFormatter } from "../../utils/numberFormatter";
 import { PropTypes } from "prop-types";
 import classNames from "classnames";
+import Icon from "./Icon";
 
 function TableRow({
   onDeleteItem,

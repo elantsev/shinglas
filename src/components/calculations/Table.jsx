@@ -1,12 +1,12 @@
 import React from "react";
 import { connect } from "react-redux";
 import style from "./Table.module.css";
-import TableRows from "./TableRows";
-import { deleteItem, changeQuantity } from "../actions/orderDataActions";
+import { deleteItem, changeQuantity } from "../../actions/orderDataActions";
 import { TableHeader } from "./TableHeader";
 import { TableFooter } from "./TableFooter";
 import PropTypes from "prop-types";
 import classNames from "classnames";
+import TableRows from "./TableRows";
 
 function Table({
   orderData,
@@ -37,7 +37,7 @@ function Table({
 
 const mapStateToProps = state => {
   return {
-    orderData: state.orderDataReducer.orderData
+    orderData: state.orderData
   };
 };
 

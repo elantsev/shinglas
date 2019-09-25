@@ -6,11 +6,7 @@ function PrivateRoute({ component: Component, isAuth, ...rest }) {
     <Route
       {...rest}
       render={props =>
-        localStorage.getItem("user") ? (
-          <Component {...props} />
-        ) : (
-          <Redirect to={{ pathname: "/" }} />
-        )
+        true ? <Component {...props} /> : <Redirect to={{ pathname: "/" }} />
       }
     />
   );
