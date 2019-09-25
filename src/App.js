@@ -4,6 +4,7 @@ import Calculations from "./components/Calculations";
 import RegistrationForm from "./components/RegistrationForm";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Page404 from "./components/Page404";
+import PrivateRoute from "./components/PrivateRoute";
 
 function App() {
   return (
@@ -11,7 +12,11 @@ function App() {
       <Router>
         <Switch>
           <Route path="/" exact component={RegistrationForm} />
-          <Route path="/Calculations/" component={Calculations} />
+          <PrivateRoute
+            path="/Calculations/"
+            component={Calculations}
+            isAuth={true}
+          />
           <Route component={Page404} />
         </Switch>
       </Router>

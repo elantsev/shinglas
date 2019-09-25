@@ -1,6 +1,5 @@
 import React from "react";
 import style from "./RegistrationForm.module.css";
-import { PropTypes } from "prop-types";
 import classNames from "classnames";
 import Button from "@material-ui/core/Button";
 import { TextField, FormControlLabel, Checkbox, Link } from "@material-ui/core";
@@ -48,7 +47,6 @@ function RegistrationForm({ className }) {
             className={style.registrationForm__form}
           >
             <TextField
-              id="outlined-required"
               name="email"
               required
               error={errors.email && touched.email}
@@ -60,11 +58,12 @@ function RegistrationForm({ className }) {
               margin="normal"
               variant="outlined"
               value={values.email}
+              autoComplete="email"
             />
             {errors.email && touched.email && errors.email}
             <TextField
-              id="outlined-required"
               name="password"
+              type="password"
               error={errors.password && touched.password}
               required
               onChange={handleChange}
@@ -74,8 +73,8 @@ function RegistrationForm({ className }) {
               className={classes.textField}
               margin="normal"
               variant="outlined"
-              type="password"
               value={values.password}
+              autoComplete="current-password"
             />
             {errors.password && touched.password && errors.password}
             <FormControlLabel
