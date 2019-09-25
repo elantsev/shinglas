@@ -5,6 +5,9 @@ import Button from "@material-ui/core/Button";
 import { TextField, FormControlLabel, Checkbox, Link } from "@material-ui/core";
 import { Formik } from "formik";
 import * as Yup from "yup";
+import { connect } from "react-redux";
+import { registration } from "../actions/registrationActions";
+import { Redirect } from "react-router-dom";
 
 const SignupSchema = Yup.object().shape({
   email: Yup.string()
@@ -15,9 +18,12 @@ const SignupSchema = Yup.object().shape({
     .required("Обязательное поле!")
 });
 
-function RegistrationForm({ className }) {
+function RegistrationForm({ className, registration, isRegistered }) {
   const classes = classNames(style.registrationForm, className);
 
+  if (isRegistered) {
+    return <Redirect to="/calculations" />;
+  }
   return (
     <div className={classes}>
       <img src="" alt="" />
@@ -26,6 +32,8 @@ function RegistrationForm({ className }) {
         validationSchema={SignupSchema}
         initialValues={{ email: "", password: "", rememberMe: true }}
         onSubmit={(values, { setSubmitting }) => {
+          let payload = values;
+          registration(payload);
           setTimeout(() => {
             alert(JSON.stringify(values, null, 2));
             setSubmitting(false);
@@ -40,7 +48,6 @@ function RegistrationForm({ className }) {
           handleBlur,
           handleSubmit,
           isSubmitting
-          /* and other goodies */
         }) => (
           <form
             onSubmit={handleSubmit}
@@ -112,9 +119,19 @@ function RegistrationForm({ className }) {
   );
 }
 
-export default RegistrationForm;
+const mapStateToProps = state => {
+  return {
+    isRegistered: state.registration
+  };
+};
 
-// RegistrationForm.propTypes = {
-//   id: PropTypes.number,
-//   onDeleteItem: PropTypes.func
-// };
+const mapDispatchToProps = dispatch => {
+  return {
+    registration: payload => dispatch(registration(payload))
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(RegistrationForm);
