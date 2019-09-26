@@ -13,6 +13,20 @@
   margin: auto;
 }
 
+.registrationForm__error_message {
+  margin: 0;
+  color: red;
+  font-size: 0.9rem;
+  text-align: left;
+}
+
 .registrationForm__hint {
   color: rgba(241, 2, 2, 0.52);
+}
+
+.registrationForm__links {
+  font-size: 0.9rem;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 5px;
 }

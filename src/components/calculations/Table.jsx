@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import style from "./Table.module.css";
-import { deleteItem, changeQuantity } from "../../actions/orderDataActions";
+import { onChangeQuantity, onDeleteItem } from "../../actions/orderDataActions";
 import { TableHeader } from "./TableHeader";
 import { TableFooter } from "./TableFooter";
 import PropTypes from "prop-types";
@@ -41,14 +41,9 @@ const mapStateToProps = state => {
   };
 };
 
-const mapDispatchToProps = dispatch => ({
-  onDeleteItem: id => dispatch(deleteItem(id)),
-  onChangeQuantity: (id, quantity) => dispatch(changeQuantity(id, quantity))
-});
-
 export default connect(
   mapStateToProps,
-  mapDispatchToProps
+  { onDeleteItem, onChangeQuantity }
 )(Table);
 
 Table.propTypes = {

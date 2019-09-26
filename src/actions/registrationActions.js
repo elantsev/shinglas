@@ -1,11 +1,11 @@
-export const REG_FORM_SUBMIT = "REG_FORM_SUBMIT";
+export const LOG_IN = "LOG_IN";
 export const LOG_OUT = "LOG_OUT";
 
-export const registration = payload => ({
-  type: REG_FORM_SUBMIT,
+export const onLogIn = payload => ({
+  type: LOG_IN,
   payload
 });
 
-export const logOut = () => ({
+export const onLogOut = () => ({
   type: LOG_OUT
 });

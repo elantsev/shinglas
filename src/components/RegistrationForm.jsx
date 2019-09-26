@@ -6,7 +6,7 @@ import { TextField, FormControlLabel, Checkbox, Link } from "@material-ui/core";
 import { Formik } from "formik";
 import * as Yup from "yup";
 import { connect } from "react-redux";
-import { registration } from "../actions/registrationActions";
+import { onLogIn } from "../actions/registrationActions";
 import { Redirect } from "react-router-dom";
 
 const SignupSchema = Yup.object().shape({
@@ -20,7 +20,7 @@ const SignupSchema = Yup.object().shape({
 
 function RegistrationForm({
   className,
-  registration,
+  onLogIn,
   isRegistered,
   showErrorMessage
 }) {
@@ -41,9 +41,8 @@ function RegistrationForm({
         validationSchema={SignupSchema}
         initialValues={{ email: "", password: "", rememberMe: true }}
         onSubmit={(values, { setSubmitting }) => {
-          let payload = values;
           setTimeout(() => {
-            registration(payload);
+            onLogIn(values);
             setSubmitting(false);
           }, 800);
         }}
@@ -67,7 +66,6 @@ function RegistrationForm({
               error={errors.email && touched.email}
               onChange={handleChange}
               onBlur={handleBlur}
-              label="Почта"
               plaseholder="Почта"
               className={classes.textField}
               margin="normal"
@@ -75,7 +73,11 @@ function RegistrationForm({
               value={values.email}
               autoComplete="email"
             />
-            {errors.email && touched.email && errors.email}
+            {errors.email && touched.email && (
+              <p className={style.registrationForm__error_message}>
+                {errors.email}
+              </p>
+            )}
             <TextField
               name="password"
               type="password"
@@ -83,7 +85,6 @@ function RegistrationForm({
               required
               onChange={handleChange}
               onBlur={handleBlur}
-              label="Пароль"
               plaseholder="Пароль"
               className={classes.textField}
               margin="normal"
@@ -91,7 +92,11 @@ function RegistrationForm({
               value={values.password}
               autoComplete="current-password"
             />
-            {errors.password && touched.password && errors.password}
+            {errors.password && touched.password && (
+              <p className={style.registrationForm__error_message}>
+                {errors.password}
+              </p>
+            )}
             <FormControlLabel
               name="checkedB"
               control={
@@ -113,11 +118,15 @@ function RegistrationForm({
             >
               Войти в аккаунт
             </Button>
-            {showErrorMessage && <p>Пароль или логин введен не верно</p>}
+            {showErrorMessage && (
+              <p className={style.registrationForm__error_message}>
+                Пароль или логин введен не верно
+              </p>
+            )}
           </form>
         )}
       </Formik>
-      <div>
+      <div className={style.registrationForm__links}>
         <Link>Забыли пароль?</Link>
         <Link>Ещё нет аккаунта? Регистрация</Link>
       </div>
@@ -134,13 +143,7 @@ const mapStateToProps = state => {
   };
 };
 
-const mapDispatchToProps = dispatch => {
-  return {
-    registration: payload => dispatch(registration(payload))
-  };
-};
-
 export default connect(
   mapStateToProps,
-  mapDispatchToProps
+  { onLogIn }
 )(RegistrationForm);

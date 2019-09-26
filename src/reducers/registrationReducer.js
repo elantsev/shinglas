@@ -1,4 +1,4 @@
-import { REG_FORM_SUBMIT, LOG_OUT } from "../actions/registrationActions";
+import { LOG_IN, LOG_OUT } from "../actions/registrationActions";
 
 const initialState = {
   isRegistered: localStorage.getItem("isRegistered"),
@@ -7,7 +7,7 @@ const initialState = {
 
 export function registration(state = initialState, action) {
   switch (action.type) {
-    case REG_FORM_SUBMIT: {
+    case LOG_IN: {
       if (
         action.payload.email === "test@test.ru" &&
         action.payload.password === "test@test.ru"
