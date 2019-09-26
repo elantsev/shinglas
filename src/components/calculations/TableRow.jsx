@@ -24,7 +24,7 @@ function TableRow({
 
   const onChangeQuantityHandler = event => {
     let value = +event.target.value;
-    if (value >= 0 && value % 1 === 0) {
+    if (value >= 0 && value < 1000 && value % 1 === 0) {
       onChangeQuantity(id, value);
     }
   };
@@ -40,7 +40,7 @@ function TableRow({
         </a>
       </div>
       <div
-        className={style.table__item}
+        className={`${style.table__item} ${style.table__quantity}`}
         onClick={() => setQuantityEditMode(true)}
       >
         {!quantityEditMode && (

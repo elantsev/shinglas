@@ -18,7 +18,12 @@ const SignupSchema = Yup.object().shape({
     .required("Обязательное поле!")
 });
 
-function RegistrationForm({ className, registration, isRegistered }) {
+function RegistrationForm({
+  className,
+  registration,
+  isRegistered,
+  showErrorMessage
+}) {
   const classes = classNames(style.registrationForm, className);
 
   if (isRegistered) {
@@ -26,6 +31,10 @@ function RegistrationForm({ className, registration, isRegistered }) {
   }
   return (
     <div className={classes}>
+      <p className={style.registrationForm__hint}>
+        email === "test@test.ru"; <br />
+        password === "test@test.ru"
+      </p>
       <img src="" alt="" />
       <h3>Вход в аккаунт</h3>
       <Formik
@@ -33,11 +42,10 @@ function RegistrationForm({ className, registration, isRegistered }) {
         initialValues={{ email: "", password: "", rememberMe: true }}
         onSubmit={(values, { setSubmitting }) => {
           let payload = values;
-          registration(payload);
           setTimeout(() => {
-            alert(JSON.stringify(values, null, 2));
+            registration(payload);
             setSubmitting(false);
-          }, 400);
+          }, 800);
         }}
       >
         {({
@@ -53,7 +61,6 @@ function RegistrationForm({ className, registration, isRegistered }) {
             onSubmit={handleSubmit}
             className={style.registrationForm__form}
           >
-            {console.log(isSubmitting)}
             <TextField
               name="email"
               required
@@ -106,6 +113,7 @@ function RegistrationForm({ className, registration, isRegistered }) {
             >
               Войти в аккаунт
             </Button>
+            {showErrorMessage && <p>Пароль или логин введен не верно</p>}
           </form>
         )}
       </Formik>
@@ -121,7 +129,8 @@ function RegistrationForm({ className, registration, isRegistered }) {
 
 const mapStateToProps = state => {
   return {
-    isRegistered: state.registration
+    isRegistered: state.registration.isRegistered,
+    showErrorMessage: state.registration.showErrorMessage
   };
 };
 

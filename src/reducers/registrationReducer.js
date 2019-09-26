@@ -1,18 +1,36 @@
-import { REG_FORM_SUBMIT } from "../actions/registrationActions";
+import { REG_FORM_SUBMIT, LOG_OUT } from "../actions/registrationActions";
 
-const initialState = false;
+const initialState = {
+  isRegistered: localStorage.getItem("isRegistered"),
+  showErrorMessage: false
+};
 
 export function registration(state = initialState, action) {
   switch (action.type) {
     case REG_FORM_SUBMIT: {
       if (
-        action.payload.email === "pasha02@list.ru" &&
-        action.payload.password === "123456"
+        action.payload.email === "test@test.ru" &&
+        action.payload.password === "test@test.ru"
       ) {
-        console.log(state);
-
-        return true;
-      }
+        if (action.payload.rememberMe) {
+          localStorage.setItem("isRegistered", true);
+        }
+        return {
+          isRegistered: true,
+          showErrorMessage: false
+        };
+      } else
+        return {
+          isRegistered: false,
+          showErrorMessage: true
+        };
+    }
+    case LOG_OUT: {
+      localStorage.removeItem("isRegistered");
+      return {
+        isRegistered: false,
+        showErrorMessage: false
+      };
     }
 
     default:

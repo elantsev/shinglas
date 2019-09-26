@@ -51,6 +51,10 @@
   width: 44.23px;
 }
 
+.table__quantity {
+  cursor: pointer;
+}
+
 .table__quantity_input {
   width: 50px;
   font-size: 13px;

@@ -19,7 +19,7 @@ function PrivateRoute({ component: Component, registration, ...rest }) {
 
 const mapStateToProps = state => {
   return {
-    registration: state.registration
+    registration: state.registration.isRegistered
   };
 };
 

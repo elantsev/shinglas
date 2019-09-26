@@ -12,3 +12,7 @@
   width: 380px;
   margin: auto;
 }
+
+.registrationForm__hint {
+  color: rgba(241, 2, 2, 0.52);
+}
